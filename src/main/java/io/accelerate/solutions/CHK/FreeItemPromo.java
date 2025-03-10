@@ -1,19 +1,29 @@
 package io.accelerate.solutions.CHK;
 
-public class FreeItemPromo implements DirectPromotion {
-    private int
+import java.util.Map;
+
+public class FreeItemPromo implements CrossPromotion {
+    private final Character item;
+    private final int requiredQuantity;
+    private final Map<String, Integer> freeitems;
+
+    public FreeItemPromo(Character item, int requiredQuantity, Map<String, Integer> freeitems) {
+        this.item = item;
+        this.requiredQuantity = requiredQuantity;
+        this.freeitems = freeitems;
+    }
 
     /**
-     * Apply int.
+     * Apply.
      *
-     * @param item      the item
-     * @param quantity  the quantity
-     * @param unitPrice the unit price
-     * @return the int
+     * @param checkOutItems the check out items
      */
     @Override
-    public int apply(Character item, int quantity, int unitPrice) {
-        return 0;
+    public void apply(Map<Character, Integer> checkOutItems) {
+        int promoItemCount = checkOutItems.get(item);
+
+        int required = promoItemCount / requiredQuantity;
     }
 }
+
 
