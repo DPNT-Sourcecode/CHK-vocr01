@@ -1,5 +1,6 @@
 package io.accelerate.solutions.CHK;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -31,12 +32,35 @@ public class CheckoutSolution {
             return -1;
         }
 
-        for (char c : skus.toCharArray()) {
-            if (PRICES.containsKey(c)) {
+        Map<Character, Integer> items = new HashMap<>();
 
+        for (char c : skus.toCharArray()) {
+            items.put(c, items.getOrDefault(c, 0) + 1);
+        }
+
+        int totalPrice = 0;
+
+        for(Map.Entry<Character, int[]> promo : PROMOTIONS.entrySet()) {
+            char promoItem = promo.getKey();
+
+            if(items.containsKey(promoItem)) {
+                int quantity = items.get(promoItem);
+                int promoQty = promo.getValue()[0];
+                int promoPrice = promo.getValue()[1];
+
+                totalPrice += (quantity / promoQty) * promoPrice;
+                quantity %= promoQty;
+                items.put(promoItem, quantity);
             }
         }
+
+        for(Map.Entry<Character, Integer> entry : items.entrySet()) {
+            totalPrice += entry.getValue() * PRICES.get(entry.getKey());
+        }
+
+        return totalPrice;
     }
 }
+
 
 
