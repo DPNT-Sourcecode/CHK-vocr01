@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * The type Checkout solution.
+ */
 public class CheckoutSolution {
 
     private static final Map<Character, Integer> PRICES = Map.of(
@@ -27,6 +30,12 @@ public class CheckoutSolution {
 
     private static final Pattern VALID_ITEMS_PATTERN = Pattern.compile(VALID_ITEMS_REGEX);
 
+    /**
+     * Supermarket checkout that calculates the total price of a number of items.
+     *
+     * @param skus the skus, the items in the form of the example: 'AABCDD'.
+     * @return the total price.
+     */
     public Integer checkout(String skus) {
         if (skus == null || skus.isBlank() || !VALID_ITEMS_PATTERN.matcher(skus.trim()).find()) {
             return -1;
@@ -61,6 +70,3 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
-
-
-
