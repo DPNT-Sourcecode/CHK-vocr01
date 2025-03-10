@@ -18,6 +18,14 @@ public class Product {
         this.freeItemPromos = freeItemPromos;
     }
 
+    public void addMultiPricePromo(MultiPricePromo multiPricePromo){
+        this.multiPricePromos.add(multiPricePromo);
+    }
+
+    public void addFreeItemPromo(FreeItemPromo freeItemPromo){
+        this.freeItemPromos.add(freeItemPromo);
+    }
+
     public char getItemCode() {
         return itemCode;
     }
@@ -34,3 +42,4 @@ public class Product {
         return freeItemPromos;
     }
 }
+
