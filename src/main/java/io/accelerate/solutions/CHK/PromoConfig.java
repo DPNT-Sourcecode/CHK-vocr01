@@ -81,6 +81,18 @@ public class PromoConfig {
             case 'B':
                 promotions.add(new MultiPricePromo('B', 2, 45));
                 break;
+            case 'H':
+                promotions.add(new MultiPricePromo('H', 5, 45));
+                promotions.add(new MultiPricePromo('H', 10, 80));
+            case 'K':
+                promotions.add(new MultiPricePromo('K', 2, 150));
+            case 'P':
+                promotions.add(new MultiPricePromo('P', 5, 200));
+            case 'Q':
+                promotions.add(new MultiPricePromo('Q', 3, 80));
+            case 'V':
+                promotions.add(new MultiPricePromo('V', 2, 90));
+                promotions.add(new MultiPricePromo('V', 3, 130));
             default:
                 break;
         }
@@ -98,10 +110,14 @@ public class PromoConfig {
 
         promotions.add(new FreeItemPromo('E', 2, Map.of('B', 1)));
         promotions.add(new FreeItemPromo('F', 2, Map.of('F', 1)));
+        promotions.add(new FreeItemPromo('N', 3, Map.of('M', 1)));
+        promotions.add(new FreeItemPromo('R', 3, Map.of('Q', 1)));
+        promotions.add(new FreeItemPromo('U', 3, Map.of('U', 1)));
 
         return promotions;
     }
 }
+
 
 
 
