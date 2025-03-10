@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary.itemPriceDictionary;
+
 /**
  * The type Checkout solution.
  */
@@ -47,11 +49,7 @@ public class CheckoutSolution {
             return validationResult;
         }
 
-        Map<Character, Integer> items = new HashMap<>();
-
-        for (char c : skus.toCharArray()) {
-            items.put(c, items.getOrDefault(c, 0) + 1);
-        }
+        Map<Character, Integer> items = parseSku(skus);
 
         int totalPrice = 0;
 
@@ -63,11 +61,19 @@ public class CheckoutSolution {
             if (promotions != null) {
                 totalPrice += applyBestPromo(item, count, promotions, items);
             } else {
-                totalPrice += count * PRICES.get(item);
+                totalPrice += count * itemPriceDictionary.get(item);
             }
         }
 
         return totalPrice;
+    }
+
+    private static Map<Character, Integer> parseSku(String skus) {
+        Map<Character, Integer> items = new HashMap<>();
+        for (char c : skus.toCharArray()) {
+            items.put(c, items.getOrDefault(c, 0) + 1);
+        }
+        return items;
     }
 
     private int applyBestPromo(char item, int count, Promotion[] promotions, Map<Character, Integer> checkOutItems) {

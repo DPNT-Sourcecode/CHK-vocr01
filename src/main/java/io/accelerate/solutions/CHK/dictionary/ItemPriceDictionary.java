@@ -2,7 +2,13 @@ package io.accelerate.solutions.CHK.dictionary;
 
 import java.util.TreeMap;
 
-public class itemPriceDictionary {
+/**
+ * The type Item price dictionary.
+ */
+public class ItemPriceDictionary {
+    /**
+     * The constant itemPriceDictionary.
+     */
     public static TreeMap<Character, Integer> itemPriceDictionary = new TreeMap<>();
 
     static {
