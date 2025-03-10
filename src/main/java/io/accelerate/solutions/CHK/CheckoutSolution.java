@@ -14,12 +14,14 @@ public class CheckoutSolution {
             'A', 50,
             'B', 30,
             'C', 20,
-            'D', 15
+            'D', 15,
+            'E', 40
     );
 
     private static final Map<Character, int[]> PROMOTIONS = Map.of(
             'A', new int[]{3, 130},
-            'B', new int[]{2, 45}
+            'B', new int[]{2, 45},
+            'E', new int[]{2, -1*PRICES.get('B')}
     );
 
     private static final String VALID_ITEMS_REGEX = "[" +
@@ -81,5 +83,3 @@ public class CheckoutSolution {
         return null;
     }
 }
-
-
