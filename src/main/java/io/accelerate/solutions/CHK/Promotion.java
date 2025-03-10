@@ -1,4 +1,9 @@
 package io.accelerate.solutions.CHK;
 
-public class Promotion {
+import java.util.Map;
+
+public abstract class Promotion {
+    abstract int[] apply(int quantity, Map<Character, Integer> checkOutItems);
+    abstract int getPromo();
 }
+
