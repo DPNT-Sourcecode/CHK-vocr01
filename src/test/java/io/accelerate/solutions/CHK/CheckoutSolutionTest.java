@@ -101,4 +101,3 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(null));
     }
 }
-
