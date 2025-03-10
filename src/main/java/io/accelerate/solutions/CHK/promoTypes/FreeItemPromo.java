@@ -49,20 +49,31 @@ public class FreeItemPromo {
                 int numberOfEligibleFreeItems = entry.getValue();
                 int totalFree = freeItemsMultiplier * numberOfEligibleFreeItems;
 
-                if (!freeItem.equals(item)) {
-                    int checkOutFreeItems = checkOutItems.getOrDefault(freeItem, 0);
-
-                    checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
-                } else if(promoItemCount >= requiredQuantity + 1) {
-                    int itemToAdjustPrice = promoItemCount - totalFree;
-
-                    checkOutItems.put(item, Math.max(itemToAdjustPrice, 0));
-                }
+                computeFreeItemPromo(checkOutItems, freeItem, totalFree, promoItemCount);
             }
         }
     }
+
+    private void computeFreeItemPromo(Map<Character, Integer> checkOutItems, Character freeItem, int totalFree, Integer promoItemCount) {
+        //Another free item
+        if (!freeItem.equals(item)) {
+            computeAnotherFreeItem(checkOutItems, freeItem, totalFree);
+
+            //A free item of the same item
+        } else if(promoItemCount >= requiredQuantity + 1) {
+            computeSameTypeFreeItem(checkOutItems, totalFree, promoItemCount);
+        }
+    }
+
+    private void computeSameTypeFreeItem(Map<Character, Integer> checkOutItems, int totalFree, Integer promoItemCount) {
+        int itemToAdjustPrice = promoItemCount - totalFree;
+
+        checkOutItems.put(item, Math.max(itemToAdjustPrice, 0));
+    }
+
+    private static void computeAnotherFreeItem(Map<Character, Integer> checkOutItems, Character freeItem, int totalFree) {
+        int checkOutFreeItems = checkOutItems.getOrDefault(freeItem, 0);
+
+        checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
+    }
 }
-
-
-
-
