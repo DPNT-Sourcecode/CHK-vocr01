@@ -1,11 +1,12 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
+import static io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary.VALID_ITEMS_PATTERN;
 import static io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary.itemPriceDictionary;
+import static io.accelerate.solutions.CHK.dictionary.ItemPromoDictionary.itemPromoDictionary;
 
 /**
  * The type Checkout solution.
@@ -46,6 +47,8 @@ public class CheckoutSolution {
     private static Map<Character, Integer> parseSku(String skus) {
         Map<Character, Integer> items = new HashMap<>();
         for (char c : skus.toCharArray()) {
+            List<Promotion> promotion = itemPromoDictionary.get(c);
+            if (itemPromoDictionary.get())
             items.put(c, items.getOrDefault(c, 0) + 1);
         }
         return items;
@@ -88,3 +91,4 @@ public class CheckoutSolution {
         return null;
     }
 }
+

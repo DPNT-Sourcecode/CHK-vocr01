@@ -19,4 +19,10 @@ public class ItemPromoDictionary {
         itemPromoDictionary.put('B', List.of(new MultiPricePromo('B', 2, 45)));
         itemPromoDictionary.put('E', List.of(new FreeItemPromo('E', 2, Map.of('B', 1))));
     }
+
+    public static TreeMap<Character, List<Promotion>> getFreeItemPromos() {
+        itemPromoDictionary.entrySet().stream().filter(map ->map.get)
+        })
+    }
 }
+
