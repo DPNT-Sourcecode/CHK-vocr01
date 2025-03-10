@@ -2,6 +2,8 @@ package io.accelerate.solutions.CHK;
 
 import java.util.Map;
 
+import static io.accelerate.solutions.CHK.CheckoutSolution.PRICES;
+
 /**
  * The type MultiPrice promotion.
  */
@@ -31,9 +33,11 @@ public class MultiPricePromotion extends Promotion {
      */
     @Override
     int apply(Map<Character, Integer> checkOutItems) {
-        int totalPrice = (checkOutItems.getOrDefault(item, 0) / quantityNeeded) * promoPrice;
+        int count = checkOutItems.getOrDefault(item, 0);
+        int totalPrice = (count / quantityNeeded) * promoPrice;
 
-        return new int[]{totalPrice, quantity % quantityNeeded};
+        return totalPrice + (count % quantityNeeded) * PRICES.get(item);
     }
 }
+
 
