@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import static io.accelerate.solutions.CHK.PromoConfig.VALID_ITEMS_PATTERN;
-import static io.accelerate.solutions.CHK.PromoConfig.getUnitPrice;
 
 /**
  * The type Checkout solution.
@@ -37,7 +36,7 @@ public class CheckoutSolution {
             int quantity = entry.getValue();
 
             List<MultiPricePromo> multiPricePromos = PromoConfig.getMultiPricePromotionForItem(item);
-            totalPrice += applyBestPromo(item, quantity);
+            totalPrice += MultiPricePromo.applyBestPromo(quantity, PromoConfig.getUnitPrice(item), multiPricePromos, items);
         }
 
         return totalPrice;
@@ -51,24 +50,6 @@ public class CheckoutSolution {
         return items;
     }
 
-    private int applyBestPromo(char item, int quantity, int unitPrice, List<MultiPricePromo> multiPricePromos, Map<Character, Integer> items) {
-        int[] minCosts = new int[quantity + 1];
-        minCosts[0] = 0;
-
-        for (int i = 1; i <= quantity; i++){
-            minCosts[i] = minCosts[i - 1] + unitPrice;
-
-            for(MultiPricePromo multiPricePromo : multiPricePromos){
-                int promoCost = multiPricePromo.apply(items);
-                if(promoCost < minCosts[i]){
-                    minCosts[i] = promoCost;
-                }
-            }
-        }
-
-        return minCosts[quantity];
-    }
-
     public static Integer validateSkus(String skus) {
         if (skus == null || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
             return -1;
@@ -80,6 +61,7 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 
 
 
