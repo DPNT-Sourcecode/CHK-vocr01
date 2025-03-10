@@ -34,4 +34,3 @@ public class Product {
         return freeItemPromos;
     }
 }
-

@@ -11,7 +11,7 @@ public class FreeItemPromo {
     private final Character item;
     private final int requiredQuantity;
     private final Map<Character, Integer> freeItems;
-
+    
     /**
      * Instantiates a new Free item promo.
      *
