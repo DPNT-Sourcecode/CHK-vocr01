@@ -27,13 +27,8 @@ public class MultiPricePromo {
         this.promoPrice = promoPrice;
     }
 
-    /**
-     * Apply.
-     *
-     * @param checkOutItems the check out items
-     */
-    public int apply(Map<Character, Integer> checkOutItems) {
-        return promoPrice * (checkOutItems.get(item) / promoQuantity) + PromoConfig.getUnitPrice(item) * (checkOutItems.get(item) % promoQuantity);
+    private int apply(int quantity) {
+        return (quantity / promoQuantity) * promoPrice + ((quantity % promoQuantity) * PromoConfig.getUnitPrice(item));
     }
 
     /**
@@ -55,8 +50,9 @@ public class MultiPricePromo {
 
             for (MultiPricePromo multiPricePromo : multiPricePromos) {
                 int promoQuantity = multiPricePromo.getPromoQuantity();
+
                 if (i >= promoQuantity) {
-                    int promoCost = multiPricePromo.apply(items);
+                    int promoCost = multiPricePromo.apply(promoQuantity);
                     minCosts[i] = Math.min(minCosts[i], minCosts[i - promoQuantity] + promoCost);
                 }
             }
@@ -65,10 +61,16 @@ public class MultiPricePromo {
         return minCosts[quantity];
     }
 
+    /**
+     * Gets promo quantity.
+     *
+     * @return the promo quantity
+     */
     public int getPromoQuantity() {
         return promoQuantity;
     }
 }
+
 
 
 
