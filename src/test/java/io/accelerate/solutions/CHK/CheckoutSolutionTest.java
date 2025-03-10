@@ -80,7 +80,14 @@ class CheckoutSolutionTest {
         assertEquals(120, checkoutSolution.checkout("UUU"));
         assertEquals(120, checkoutSolution.checkout("UUUU"));
         assertEquals(240, checkoutSolution.checkout("UUUUUUUU"));
-
+        assertEquals(50, checkoutSolution.checkout("V"));
+        assertEquals(90, checkoutSolution.checkout("VV"));
+        assertEquals(130, checkoutSolution.checkout("VVV"));
+        assertEquals(180, checkoutSolution.checkout("VVVV"));
+        assertEquals(40, checkoutSolution.checkout("WW"));
+        assertEquals(180, checkoutSolution.checkout("XX"));
+        assertEquals(20, checkoutSolution.checkout("YY"));
+        assertEquals(100, checkoutSolution.checkout("ZZ"));
     }
 
     @Test
@@ -94,3 +101,4 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(null));
     }
 }
+
