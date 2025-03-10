@@ -49,6 +49,7 @@ public class GroupItemPromo {
             }
         }
 
+        //Order to remove higher prices first
         itemList.sort((a, b) -> Integer.compare(b.getUnitPrice(), a.getUnitPrice()));
         return itemList;
     }
@@ -89,6 +90,7 @@ public class GroupItemPromo {
         }
     }
 }
+
 
 
 
