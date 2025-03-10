@@ -33,11 +33,12 @@ class CheckoutSolutionTest {
         assertEquals(330, checkoutSolution.checkout("AAAAAAAA"));
         assertEquals(295, checkoutSolution.checkout("CCAAABBBEE"));
 
+        assertEquals(10, checkoutSolution.checkout("F"));
         assertEquals(20, checkoutSolution.checkout("FF"));
         assertEquals(20, checkoutSolution.checkout("FFF"));
         assertEquals(30, checkoutSolution.checkout("FFFF"));
+        assertEquals(40, checkoutSolution.checkout("FFFFFF"));
         assertEquals(315, checkoutSolution.checkout("CCAAAFBBBEEF"));
-        assertEquals(315, checkoutSolution.checkout("FFCCAAAFBBBEEF"));
         assertEquals(325, checkoutSolution.checkout("FFCCAAAFBBBEEF"));
 
         assertEquals(-1, checkoutSolution.checkout("W"));
@@ -49,3 +50,4 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(null));
     }
 }
+

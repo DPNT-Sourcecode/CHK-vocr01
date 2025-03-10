@@ -60,13 +60,20 @@ public class FreeItemPromo {
             computeAnotherFreeItem(checkOutItems, freeItem, totalFree);
 
             //A free item of the same item
-        } else if(promoItemCount >= requiredQuantity + 1) {
-            computeSameTypeFreeItem(checkOutItems, totalFree, promoItemCount);
+        } else {
+            computeSameTypeFreeItem(checkOutItems, promoItemCount);
         }
     }
 
-    private void computeSameTypeFreeItem(Map<Character, Integer> checkOutItems, int totalFree, Integer promoItemCount) {
-        int itemToAdjustPrice = promoItemCount - totalFree;
+    private void computeSameTypeFreeItem(Map<Character, Integer> checkOutItems, Integer promoItemCount) {
+
+        int groupSize = requiredQuantity + 1;
+        if(promoItemCount < groupSize) {
+            return;
+        }
+
+        int freeItemCount = promoItemCount / groupSize;
+        int itemToAdjustPrice = promoItemCount - freeItemCount;
 
         checkOutItems.put(item, Math.max(itemToAdjustPrice, 0));
     }
@@ -77,3 +84,4 @@ public class FreeItemPromo {
         checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
     }
 }
+
