@@ -28,9 +28,7 @@ public class CheckoutSolution {
 
         Map<Character, Integer> items = parseSku(skus);
 
-        for (FreeItemPromo freeItemPromo : PromoConfig.getFreeItemPromotionForItem()) {
-            freeItemPromo.apply(items);
-        }
+        FreeItemPromo.applyFreeItemPromo(items);
 
         int totalPrice = 0;
 
@@ -39,7 +37,7 @@ public class CheckoutSolution {
             int quantity = entry.getValue();
 
             List<MultiPricePromo> multiPricePromos = PromoConfig.getMultiPricePromotionForItem(item);
-            totalPrice += MultiPricePromo.applyBestPromo(quantity, PromoConfig.getUnitPrice(item), multiPricePromos, items);
+            totalPrice += MultiPricePromo.applyBestPromo(quantity, PromoConfig.getUnitPrice(item), multiPricePromos);
         }
 
         return totalPrice;
@@ -53,7 +51,7 @@ public class CheckoutSolution {
         return items;
     }
 
-    public static Integer validateSkus(String skus) {
+    private static Integer validateSkus(String skus) {
         if (skus == null || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
             return -1;
         }
@@ -64,3 +62,4 @@ public class CheckoutSolution {
         return null;
     }
 }
+

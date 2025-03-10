@@ -1,12 +1,24 @@
 package io.accelerate.solutions.CHK.promoTypes;
 
+import io.accelerate.solutions.CHK.PromoConfig;
+
 import java.util.Map;
 
+/**
+ * The type Free item promo.
+ */
 public class FreeItemPromo {
     private final Character item;
     private final int requiredQuantity;
     private final Map<Character, Integer> freeItems;
 
+    /**
+     * Instantiates a new Free item promo.
+     *
+     * @param item             the item
+     * @param requiredQuantity the required quantity
+     * @param freeItems        the free items
+     */
     public FreeItemPromo(Character item, int requiredQuantity, Map<Character, Integer> freeItems) {
         this.item = item;
         this.requiredQuantity = requiredQuantity;
@@ -14,11 +26,17 @@ public class FreeItemPromo {
     }
 
     /**
-     * Apply.
+     * Apply free item promo.
      *
-     * @param checkOutItems the check-out items
+     * @param items the items
      */
-    public void apply(Map<Character, Integer> checkOutItems) {
+    public static void applyFreeItemPromo(Map<Character, Integer> items) {
+        for (FreeItemPromo freeItemPromo : PromoConfig.getFreeItemPromotionForItem()) {
+            freeItemPromo.applyPromo(items);
+        }
+    }
+
+    private void applyPromo(Map<Character, Integer> checkOutItems) {
         Integer promoItemCount = checkOutItems.get(item);
         if (promoItemCount != null) {
             int freeItemsMultiplier = promoItemCount / requiredQuantity;
@@ -37,3 +55,4 @@ public class FreeItemPromo {
         }
     }
 }
+

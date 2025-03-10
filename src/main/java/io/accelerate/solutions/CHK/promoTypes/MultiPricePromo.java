@@ -37,10 +37,9 @@ public class MultiPricePromo {
      * @param quantity         the quantity
      * @param unitPrice        the unit price
      * @param multiPricePromos the multi price promos
-     * @param items            the items
      * @return the int
      */
-    public static int applyBestPromo(int quantity, int unitPrice, List<MultiPricePromo> multiPricePromos, Map<Character, Integer> items) {
+    public static int applyBestPromo(int quantity, int unitPrice, List<MultiPricePromo> multiPricePromos) {
         int[] minCosts = new int[quantity + 1];
         Arrays.fill(minCosts, Integer.MAX_VALUE);
         minCosts[0] = 0;
@@ -70,3 +69,4 @@ public class MultiPricePromo {
         return promoQuantity;
     }
 }
+
