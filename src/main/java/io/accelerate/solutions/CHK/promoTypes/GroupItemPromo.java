@@ -25,18 +25,22 @@ public class GroupItemPromo {
         }
 
         int numberOfBundles = totalGroupItems / requiredQuantity;
-        if(numberOfBundles <= 0) {
+        if (numberOfBundles <= 0) {
             return 0;
         }
 
         List<GroupItem> itemList = new ArrayList<>();
         for (Character groupItem : group) {
             int quantity = items.getOrDefault(groupItem, 0);
-            if(quantity > 0) {
-                itemList.add(new GroupItem(groupItem, PromoConfig.getUnitPrice(groupItem),quantity));
+            if (quantity > 0) {
+                itemList.add(new GroupItem(groupItem, PromoConfig.getUnitPrice(groupItem), quantity));
             }
         }
 
+        itemList.sort((a, b) -> Integer.compare(b.getUnitPrice(), a.getUnitPrice()));
+
+        int totalCostOfBundles = numberOfBundles * groupPrice;
+        int itemsOutOfPromotion = numberOfBundles * requiredQuantity;
     }
 
     private static class GroupItem {
@@ -49,6 +53,11 @@ public class GroupItemPromo {
             this.unitPrice = unitPrice;
             this.quantity = quantity;
         }
+
+        public int getUnitPrice() {
+            return unitPrice;
+        }
     }
 }
+
 
