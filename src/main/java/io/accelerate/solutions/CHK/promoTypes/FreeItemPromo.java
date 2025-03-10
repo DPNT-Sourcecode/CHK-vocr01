@@ -84,4 +84,3 @@ public class FreeItemPromo {
         checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
     }
 }
-

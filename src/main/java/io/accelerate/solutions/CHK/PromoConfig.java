@@ -84,15 +84,20 @@ public class PromoConfig {
             case 'H':
                 promotions.add(new MultiPricePromo('H', 5, 45));
                 promotions.add(new MultiPricePromo('H', 10, 80));
+                break;
             case 'K':
                 promotions.add(new MultiPricePromo('K', 2, 150));
+                break;
             case 'P':
                 promotions.add(new MultiPricePromo('P', 5, 200));
+                break;
             case 'Q':
                 promotions.add(new MultiPricePromo('Q', 3, 80));
+                break;
             case 'V':
                 promotions.add(new MultiPricePromo('V', 2, 90));
                 promotions.add(new MultiPricePromo('V', 3, 130));
+                break;
             default:
                 break;
         }
@@ -117,7 +122,3 @@ public class PromoConfig {
         return promotions;
     }
 }
-
-
-
-
