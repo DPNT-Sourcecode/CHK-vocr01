@@ -3,9 +3,7 @@ package io.accelerate.solutions.CHK;
 import io.accelerate.solutions.CHK.promoTypes.FreeItemPromo;
 import io.accelerate.solutions.CHK.promoTypes.MultiPricePromo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -14,8 +12,26 @@ import java.util.stream.Collectors;
  */
 public class PromoConfig {
 
-    private static final Map<Character, Integer> PRICES = Map.ofEntries(
-            Map.entry('A', 50),
+    private static final Map<Character, Product> PRODUCT_CATALOG = new HashMap<>();
+
+    static {
+        addProduct
+    }
+
+    private static void addProduct(char itemCode, int price, Object...promotions){
+        Product product = new Product(itemCode,price);
+        for (Object promotion : promotions) {
+            if (promotion instanceof MultiPricePromo) {
+                product.addMultiPricePromo((MultiPricePromo) promotion);
+            }else if (promotion instanceof FreeItemPromo) {
+                product.addFreeItemPromo((FreeItemPromo) promotion);
+            }
+        }
+        PRODUCT_CATALOG.put(itemCode,product);
+    }
+
+            Map.ofEntries(
+            Map.entry('A', new Product(),
             Map.entry('B', 30),
             Map.entry('C', 20),
             Map.entry('D', 15),
@@ -102,4 +118,5 @@ public class PromoConfig {
         return promotions;
     }
 }
+
 

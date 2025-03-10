@@ -3,6 +3,7 @@ package io.accelerate.solutions.CHK;
 import io.accelerate.solutions.CHK.promoTypes.FreeItemPromo;
 import io.accelerate.solutions.CHK.promoTypes.MultiPricePromo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -11,11 +12,11 @@ public class Product {
     private final List<MultiPricePromo> multiPricePromos;
     private final List<FreeItemPromo> freeItemPromos;
 
-    public Product(char itemCode, int unitPrice, List<MultiPricePromo> multiPricePromos, List<FreeItemPromo> freeItemPromos) {
+    public Product(char itemCode, int unitPrice) {
         this.itemCode = itemCode;
         this.unitPrice = unitPrice;
-        this.multiPricePromos = multiPricePromos;
-        this.freeItemPromos = freeItemPromos;
+        this.multiPricePromos = new ArrayList<>();
+        this.freeItemPromos = new ArrayList<>();
     }
 
     public void addMultiPricePromo(MultiPricePromo multiPricePromo){
@@ -42,4 +43,5 @@ public class Product {
         return freeItemPromos;
     }
 }
+
 
