@@ -26,7 +26,7 @@ public class CheckoutSolution {
             PRICES.keySet().
                     stream().
                     map(String::valueOf).
-                    collect(Collectors.joining()) + "]";
+                    collect(Collectors.joining()) + "]*";
 
     private static final Pattern VALID_ITEMS_PATTERN = Pattern.compile(VALID_ITEMS_REGEX);
 
@@ -70,3 +70,4 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
