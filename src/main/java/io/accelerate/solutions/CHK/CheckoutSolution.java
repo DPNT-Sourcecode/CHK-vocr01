@@ -1,6 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.accelerate.solutions.CHK.PromoConfig.VALID_ITEMS_PATTERN;
@@ -34,13 +35,10 @@ public class CheckoutSolution {
         for (Map.Entry<Character, Integer> entry : items.entrySet()) {
             char item = entry.getKey();
             int count = entry.getValue();
-            Promotion[] promotions = PROMOTIONS.get(item);
+            int unitPrice = PromoConfig.getUnitPrice(item);
 
-            if (promotions != null) {
-                totalPrice += applyBestPromo(item, count, promotions, items);
-            } else {
-                totalPrice += count * itemPriceDictionary.get(item);
-            }
+
+            List<MultiPricePromo> multiPricePromos = PromoConfig.getMultiPricePromotionForItem(item);
         }
 
         return totalPrice;
@@ -91,5 +89,6 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 
 
