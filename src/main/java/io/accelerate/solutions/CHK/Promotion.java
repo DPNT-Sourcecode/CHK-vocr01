@@ -22,5 +22,3 @@ public abstract class Promotion {
      */
     abstract int getPromo();
 }
-
-

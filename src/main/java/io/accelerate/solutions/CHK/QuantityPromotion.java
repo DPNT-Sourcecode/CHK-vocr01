@@ -45,5 +45,3 @@ public class QuantityPromotion extends Promotion {
         return (quantityNeeded / quantityNeeded) * promoPrice;
     }
 }
-
-

@@ -5,4 +5,3 @@ public class Produto {
     private int unitPrice;
     private List<Promotion> promos;
 }
-
