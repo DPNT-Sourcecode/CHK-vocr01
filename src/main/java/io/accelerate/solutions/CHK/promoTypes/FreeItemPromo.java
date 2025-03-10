@@ -48,11 +48,18 @@ public class FreeItemPromo {
                 Character freeItem = entry.getKey();
                 int numberOfEligibleFreeItems = entry.getValue();
                 int totalFree = freeItemsMultiplier * numberOfEligibleFreeItems;
-                int checkOutFreeItems = checkOutItems.getOrDefault(freeItem, 0);
 
-                checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
+                if(freeItem.equals(item)){
+                    int itemToAdjustPrice = promoItemCount - totalFree;
+                    checkOutItems.put(item, Math.max(itemToAdjustPrice, 0));
+                }else {
+                    int checkOutFreeItems = checkOutItems.getOrDefault(freeItem, 0);
+
+                    checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
+                }
             }
         }
     }
 }
+
 
