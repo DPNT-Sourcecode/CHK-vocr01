@@ -39,15 +39,15 @@ public class FreeItemPromo {
     private void applyPromo(Map<Character, Integer> checkOutItems) {
         Integer promoItemCount = checkOutItems.get(item);
         if (promoItemCount != null) {
-            int freeItemsMultiplier = promoItemCount / requiredQuantity;
-            if (freeItemsMultiplier <= 0) {
+            int numberOfBundles = promoItemCount / requiredQuantity;
+            if (numberOfBundles <= 0) {
                 return;
             }
 
             for (Map.Entry<Character, Integer> entry : freeItems.entrySet()) {
                 Character freeItem = entry.getKey();
                 int numberOfEligibleFreeItems = entry.getValue();
-                int totalFree = freeItemsMultiplier * numberOfEligibleFreeItems;
+                int totalFree = numberOfBundles * numberOfEligibleFreeItems;
 
                 computeFreeItemPromo(checkOutItems, freeItem, totalFree, promoItemCount);
             }
@@ -72,8 +72,8 @@ public class FreeItemPromo {
             return;
         }
 
-        int freeItemCount = promoItemCount / groupSize;
-        int itemToAdjustPrice = promoItemCount - freeItemCount;
+        int numberOfBundles = promoItemCount / groupSize;
+        int itemToAdjustPrice = promoItemCount - numberOfBundles;
 
         checkOutItems.put(item, Math.max(itemToAdjustPrice, 0));
     }
@@ -84,3 +84,4 @@ public class FreeItemPromo {
         checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
     }
 }
+

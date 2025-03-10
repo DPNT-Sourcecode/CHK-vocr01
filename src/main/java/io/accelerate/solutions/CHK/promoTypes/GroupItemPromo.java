@@ -1,5 +1,9 @@
 package io.accelerate.solutions.CHK.promoTypes;
 
+import io.accelerate.solutions.CHK.PromoConfig;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,6 +25,30 @@ public class GroupItemPromo {
         }
 
         int numberOfBundles = totalGroupItems / requiredQuantity;
+        if(numberOfBundles <= 0) {
+            return 0;
+        }
+
+        List<GroupItem> itemList = new ArrayList<>();
+        for (Character groupItem : group) {
+            int quantity = items.getOrDefault(groupItem, 0);
+            if(quantity > 0) {
+                itemList.add(new GroupItem(groupItem, PromoConfig.getUnitPrice(groupItem),quantity));
+            }
+        }
 
     }
+
+    private static class GroupItem {
+        private final Character groupItem;
+        private final int unitPrice;
+        private final int quantity;
+
+        private GroupItem(Character groupItem, int unitPrice, int quantity) {
+            this.groupItem = groupItem;
+            this.unitPrice = unitPrice;
+            this.quantity = quantity;
+        }
+    }
 }
+
