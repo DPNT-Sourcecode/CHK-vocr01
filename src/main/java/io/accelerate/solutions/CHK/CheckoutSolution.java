@@ -49,21 +49,20 @@ public class CheckoutSolution {
 
         int totalPrice = 0;
 
-        for(Map.Entry<Character, int[]> promo : PROMOTIONS.entrySet()) {
+        for (Map.Entry<Character, int[]> promo : PROMOTIONS.entrySet()) {
             char promoItem = promo.getKey();
 
-            if(items.containsKey(promoItem)) {
+            if (items.containsKey(promoItem)) {
                 int quantity = items.get(promoItem);
                 int promoQty = promo.getValue()[0];
                 int promoPrice = promo.getValue()[1];
 
                 totalPrice += (quantity / promoQty) * promoPrice;
-                quantity %= promoQty;
-                items.put(promoItem, quantity);
+                items.put(promoItem, quantity % promoQty);
             }
         }
 
-        for(Map.Entry<Character, Integer> entry : items.entrySet()) {
+        for (Map.Entry<Character, Integer> entry : items.entrySet()) {
             totalPrice += entry.getValue() * PRICES.get(entry.getKey());
         }
 
