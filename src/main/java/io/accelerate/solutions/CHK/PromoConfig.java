@@ -77,8 +77,10 @@ public class PromoConfig {
         List<FreeItemPromo> promotions = new ArrayList<>();
 
         promotions.add(new FreeItemPromo('E', 2, Map.of('B', 1)));
+        promotions.add(new FreeItemPromo('F', 2, Map.of('F', 1)));
 
         return promotions;
     }
 }
+
 
