@@ -27,6 +27,8 @@ class CheckoutSolutionTest {
 
         assertEquals(80, checkoutSolution.checkout("EE"));
 
+        assertEquals(80, checkoutSolution.checkout("EEB"));
+
         assertEquals(-1, checkoutSolution.checkout("W"));
         assertEquals(-1, checkoutSolution.checkout("ABW"));
         assertEquals(-1, checkoutSolution.checkout("WBA"));
