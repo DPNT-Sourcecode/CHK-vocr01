@@ -40,6 +40,3 @@ public class FreeItemPromo implements Promotion {
         return 0;
     }
 }
-
-
-
