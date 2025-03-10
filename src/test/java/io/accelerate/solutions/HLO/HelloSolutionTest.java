@@ -23,12 +23,13 @@ class HelloSolutionTest {
      */
     @Test
     void helloTest() {
-        Assertions.assertFalse(helloSolution.hello("Tiago").contains("Tiago"));
         Assertions.assertNotNull(helloSolution.hello("Tiago"));
         Assertions.assertFalse(helloSolution.hello("Tiago").isBlank());
-//        Assertions.assertTrue(helloSolution.hello("Tiago").contains("Tiago"));
-//        Assertions.assertEquals("Hello World!", helloSolution.hello(""));
-//        Assertions.assertEquals("Hello World!", helloSolution.hello("  "));
-//        Assertions.assertEquals("Hello World!", helloSolution.hello(null));
+
+        Assertions.assertTrue(helloSolution.hello("Tiago").contains("Tiago"));
+        Assertions.assertEquals("Hello, John!", helloSolution.hello("John"));
+        Assertions.assertEquals("Hello, World!", helloSolution.hello(""));
+        Assertions.assertEquals("Hello, World!", helloSolution.hello("  "));
+        Assertions.assertEquals("Hello, World!", helloSolution.hello(null));
     }
 }
