@@ -41,12 +41,19 @@ public class GroupItemPromo {
 
         int totalCostOfBundles = numberOfBundles * groupPrice;
         int itemsOutOfPromotion = numberOfBundles * requiredQuantity;
+
+        for (GroupItem item : itemList) {
+            while(item.getQuantity() > 0 && itemsOutOfPromotion > 0) {
+                item.setQuantity(item.getQuantity()-1);
+                itemsOutOfPromotion--;
+            }
+        }
     }
 
     private static class GroupItem {
         private final Character groupItem;
         private final int unitPrice;
-        private final int quantity;
+        private int quantity;
 
         private GroupItem(Character groupItem, int unitPrice, int quantity) {
             this.groupItem = groupItem;
@@ -57,7 +64,20 @@ public class GroupItemPromo {
         public int getUnitPrice() {
             return unitPrice;
         }
+
+        public Character getGroupItem() {
+            return groupItem;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
     }
 }
+
 
 
