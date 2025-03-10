@@ -1,12 +1,10 @@
 package io.accelerate.solutions.CHK;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary.VALID_ITEMS_PATTERN;
-import static io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary.itemPriceDictionary;
-import static io.accelerate.solutions.CHK.dictionary.ItemPromoDictionary.itemPromoDictionary;
+import static io.accelerate.solutions.CHK.PromoConfig.VALID_ITEMS_PATTERN;
+import static io.accelerate.solutions.CHK.PromoConfig.getUnitPrice;
 
 /**
  * The type Checkout solution.
@@ -26,6 +24,10 @@ public class CheckoutSolution {
         }
 
         Map<Character, Integer> items = parseSku(skus);
+
+        for (FreeItemPromo freeItemPromo : PromoConfig.getFreeItemPromotionForItem()) {
+            freeItemPromo.apply(items);
+        }
 
         int totalPrice = 0;
 
@@ -47,15 +49,13 @@ public class CheckoutSolution {
     private static Map<Character, Integer> parseSku(String skus) {
         Map<Character, Integer> items = new HashMap<>();
         for (char c : skus.toCharArray()) {
-            List<Promotion> promotion = itemPromoDictionary.get(c);
-            if (itemPromoDictionary.get())
             items.put(c, items.getOrDefault(c, 0) + 1);
         }
         return items;
     }
 
     private int applyBestPromo(char item, int count, Promotion[] promotions, Map<Character, Integer> checkOutItems) {
-        int minTotal = count * PRICES.get(item);
+        int minTotal = count * getUnitPrice(item);
 
         for (Promotion promotion : promotions) {
             int total = 0;
@@ -91,4 +91,5 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 

@@ -16,7 +16,7 @@ public class FreeItemPromo implements Promotion {
     /**
      * Apply.
      *
-     * @param checkOutItems the check out items
+     * @param checkOutItems the check-out items
      * @return the int. Is 0 because de promo is done directly into the checkOutItems
      */
     @Override
@@ -39,3 +39,4 @@ public class FreeItemPromo implements Promotion {
         return 0;
     }
 }
+

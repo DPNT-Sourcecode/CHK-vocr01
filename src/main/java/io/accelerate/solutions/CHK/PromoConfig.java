@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * The type Promo config.
+ */
 public class PromoConfig {
 
     private static final Map<Character, Integer> PRICES = Map.of(
@@ -22,12 +25,27 @@ public class PromoConfig {
                     map(String::valueOf).
                     collect(Collectors.joining()) + "]*";
 
+    /**
+     * The constant VALID_ITEMS_PATTERN.
+     */
     public static final Pattern VALID_ITEMS_PATTERN = Pattern.compile(VALID_ITEMS_REGEX);
 
+    /**
+     * Gets unit price.
+     *
+     * @param item the item
+     * @return the unit price
+     */
     public static Integer getUnitPrice(Character item) {
         return PRICES.get(item);
     }
 
+    /**
+     * Gets multi price promotion for item.
+     *
+     * @param item the item
+     * @return the multi price promotion for item
+     */
     public static List<MultiPricePromo> getMultiPricePromotionForItem(Character item) {
         List<MultiPricePromo> promotions = new ArrayList<MultiPricePromo>();
 
@@ -45,12 +63,18 @@ public class PromoConfig {
         return promotions;
     }
 
-    public static List<FreeItemPromo> getFreeItemPromotionForItem(Character item) {
-        List<FreeItemPromo> promotions = new ArrayList<FreeItemPromo>();
+    /**
+     * Gets free item promotion for item.
+     *
+     * @return the free item promotion for item
+     */
+    public static List<FreeItemPromo> getFreeItemPromotionForItem() {
+        List<FreeItemPromo> promotions = new ArrayList<>();
 
         promotions.add(new FreeItemPromo('E', 2, Map.of('B', 1)));
 
         return promotions;
     }
 }
+
 
