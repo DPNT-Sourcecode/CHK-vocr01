@@ -34,6 +34,7 @@ class CheckoutSolutionTest {
         assertEquals(295, checkoutSolution.checkout("CCAAABBBEE"));
 
         assertEquals(20, checkoutSolution.checkout("FF"));
+        assertEquals(20, checkoutSolution.checkout("FFF"));
 
         assertEquals(-1, checkoutSolution.checkout("W"));
         assertEquals(-1, checkoutSolution.checkout("ABW"));
@@ -44,4 +45,5 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(null));
     }
 }
+
 
