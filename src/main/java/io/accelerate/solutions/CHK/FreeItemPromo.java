@@ -34,9 +34,12 @@ public class FreeItemPromo implements Promotion {
                 int totalFree = required * freeQuantity;
                 int currentCount = checkOutItems.getOrDefault(freeItem, 0);
 
-                checkOutItems.put(freeItem, Math.max(currentCount - totalFree, totalFree));
+                if(currentCount > 0 ){
+                    checkOutItems.put(freeItem, Math.max(currentCount - totalFree, totalFree));
+                }
             }
         }
         return 0;
     }
 }
+
