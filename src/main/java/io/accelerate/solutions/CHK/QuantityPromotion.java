@@ -42,7 +42,8 @@ public class QuantityPromotion extends Promotion {
      */
     @Override
     int getPromo() {
-        return 0;
+        return (quantityNeeded / quantityNeeded) * promoPrice;
     }
 }
+
 
