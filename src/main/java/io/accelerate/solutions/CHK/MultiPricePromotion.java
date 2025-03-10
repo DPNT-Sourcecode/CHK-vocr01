@@ -3,9 +3,9 @@ package io.accelerate.solutions.CHK;
 import java.util.Map;
 
 /**
- * The type Quantity promotion.
+ * The type MultiPrice promotion.
  */
-public class QuantityPromotion extends Promotion {
+public class MultiPricePromotion extends Promotion {
     private final int quantityNeeded;
     private final int promoPrice;
 
@@ -15,7 +15,7 @@ public class QuantityPromotion extends Promotion {
      * @param quantityNeeded the quantity needed
      * @param promoPrice     the promo price
      */
-    public QuantityPromotion(int quantityNeeded, int promoPrice) {
+    public MultiPricePromotion(int quantityNeeded, int promoPrice) {
         this.quantityNeeded = quantityNeeded;
         this.promoPrice = promoPrice;
     }

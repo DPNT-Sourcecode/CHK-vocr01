@@ -9,16 +9,9 @@ public abstract class Promotion {
     /**
      * Apply the promo to the product based on the check out items and the quantity of the item.
      *
-     * @param quantity      the quantity of the item to apply the promo
      * @param checkOutItems the check out items
-     * @return the int [ ] the promos
+     * @return the promo applied
      */
-    abstract int[] apply(int quantity, Map<Character, Integer> checkOutItems);
-
-    /**
-     * Gets promo.
-     *
-     * @return the promo
-     */
-    abstract int getPromo();
+    abstract int apply(Map<Character, Integer> checkOutItems);
 }
+
