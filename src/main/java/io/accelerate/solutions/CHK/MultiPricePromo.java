@@ -1,24 +1,28 @@
 package io.accelerate.solutions.CHK;
 
-public class MultiPricePromo implements DirectPromotion {
+import io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary;
+
+import java.util.Map;
+
+public class MultiPricePromo implements Promotion {
+    private Character item;
     private final int promoQuantity;
     private final int promoPrice;
 
-    public MultiPricePromo(int promoQuantity, int promoPrice) {
+    public MultiPricePromo(Character item, int promoQuantity, int promoPrice) {
+        this.item = item;
         this.promoQuantity = promoQuantity;
         this.promoPrice = promoPrice;
     }
 
     /**
-     * Apply int.
+     * Apply.
      *
-     * @param item      the item
-     * @param quantity  the quantity
-     * @param unitPrice the unit price
-     * @return the int
+     * @param checkOutItems the check out items
      */
     @Override
-    public int apply(Character item, int quantity, int unitPrice) {
-        return promoPrice * (quantity / promoQuantity) + unitPrice * (quantity % promoQuantity);
+    public int apply(Map<Character, Integer> checkOutItems) {
+        return promoPrice * (checkOutItems.get(item) / promoQuantity) + ItemPriceDictionary.itemPriceDictionary.get(item) * (checkOutItems.get(item) % promoQuantity);
     }
 }
+

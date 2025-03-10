@@ -3,15 +3,17 @@ package io.accelerate.solutions.CHK;
 import java.util.Map;
 
 /**
- * The interface Cross promotion.
+ * The interface Promotion.
  */
-public interface CrossPromotion {
+public interface Promotion {
 
     /**
      * Apply.
      *
      * @param checkOutItems the check out items
+     * @return the int
      */
-    void apply(Map<Character, Integer> checkOutItems);
+    int apply(Map<Character, Integer> checkOutItems);
 }
+
 
