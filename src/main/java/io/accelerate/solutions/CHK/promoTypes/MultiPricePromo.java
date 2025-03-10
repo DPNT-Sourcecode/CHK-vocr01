@@ -1,4 +1,6 @@
-package io.accelerate.solutions.CHK;
+package io.accelerate.solutions.CHK.promoTypes;
+
+import io.accelerate.solutions.CHK.PromoConfig;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +8,7 @@ import java.util.Map;
 /**
  * The type Multi price promo.
  */
-public class MultiPricePromo implements Promotion {
+public class MultiPricePromo {
     private final Character item;
     private final int promoQuantity;
     private final int promoPrice;
@@ -29,7 +31,6 @@ public class MultiPricePromo implements Promotion {
      *
      * @param checkOutItems the check out items
      */
-    @Override
     public int apply(Map<Character, Integer> checkOutItems) {
         return promoPrice * (checkOutItems.get(item) / promoQuantity) + PromoConfig.getUnitPrice(item) * (checkOutItems.get(item) % promoQuantity);
     }
@@ -51,13 +52,19 @@ public class MultiPricePromo implements Promotion {
             minCosts[i] = minCosts[i - 1] + unitPrice;
 
             for (MultiPricePromo multiPricePromo : multiPricePromos) {
-                int promoCost = multiPricePromo.apply(items);
-                if (promoCost < minCosts[i]) {
-                    minCosts[i] = promoCost;
+                int promoQuantity = multiPricePromo.getPromoQuantity();
+                if (i >= promoQuantity) {
+                    int promoCost = multiPricePromo.apply(items);
+                    minCosts[i] = Math.min(minCosts[i], minCosts[i - promoQuantity] + promoCost);
                 }
             }
         }
 
         return minCosts[quantity];
     }
+
+    public int getPromoQuantity() {
+        return promoQuantity;
+    }
 }
+

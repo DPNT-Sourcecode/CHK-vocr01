@@ -1,5 +1,8 @@
 package io.accelerate.solutions.CHK;
 
+import io.accelerate.solutions.CHK.promoTypes.FreeItemPromo;
+import io.accelerate.solutions.CHK.promoTypes.MultiPricePromo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +50,7 @@ public class PromoConfig {
      * @return the multi price promotion for item
      */
     public static List<MultiPricePromo> getMultiPricePromotionForItem(Character item) {
-        List<MultiPricePromo> promotions = new ArrayList<MultiPricePromo>();
+        List<MultiPricePromo> promotions = new ArrayList<>();
 
         switch (item) {
             case 'A':
@@ -77,3 +80,4 @@ public class PromoConfig {
         return promotions;
     }
 }
+

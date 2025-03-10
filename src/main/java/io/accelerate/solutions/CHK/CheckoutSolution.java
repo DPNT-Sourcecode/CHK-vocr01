@@ -1,5 +1,8 @@
 package io.accelerate.solutions.CHK;
 
+import io.accelerate.solutions.CHK.promoTypes.FreeItemPromo;
+import io.accelerate.solutions.CHK.promoTypes.MultiPricePromo;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,3 +64,4 @@ public class CheckoutSolution {
         return null;
     }
 }
+
