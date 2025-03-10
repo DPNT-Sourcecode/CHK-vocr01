@@ -37,7 +37,7 @@ public class CheckoutSolution {
      * @return the total price.
      */
     public Integer checkout(String skus) {
-        if (skus == null || skus.isBlank() || !VALID_ITEMS_PATTERN.matcher(skus.trim()).find()) {
+        if (skus == null || skus.isBlank() || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
             return -1;
         }
 
@@ -70,4 +70,5 @@ public class CheckoutSolution {
         return totalPrice;
     }
 }
+
 
