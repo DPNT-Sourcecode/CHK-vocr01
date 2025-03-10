@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  */
 public class CheckoutSolution {
 
-    static final Map<Character, Integer> PRICES = Map.of(
+    private static final Map<Character, Integer> PRICES = Map.of(
             'A', 50,
             'B', 30,
             'C', 20,
@@ -107,5 +107,6 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 
 
