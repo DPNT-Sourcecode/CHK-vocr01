@@ -19,11 +19,11 @@ public class CheckoutSolution {
     );
 
     private static final Map<Character, Promotion[]> PROMOTIONS = Map.of(
-            'A', new MultiPricePromotion[]{
-                    new MultiPricePromotion('A', 3, 130),
-                    new MultiPricePromotion('A', 5, 200)
+            'A', new Promotion[]{
+                    new Promotion('A', 3, 130),
+                    new Promotion('A', 5, 200)
             },
-            'B', new MultiPricePromotion[]{new MultiPricePromotion('B', 2, 45)},
+            'B', new Promotion[]{new Promotion('B', 2, 45)},
             'E', new FreeItemPromotion[]{new FreeItemPromotion('E', 2, 'B')}
     );
 
@@ -77,6 +77,15 @@ public class CheckoutSolution {
 
     private int applyBestPromo(char item, int count, Promotion[] promotions, Map<Character, Integer> checkOutItems) {
         int minTotal = count * PRICES.get(item);
+
+        for (Promotion promotion : promotions) {
+            int total = 0;
+            int remaining = count;
+
+            while (remaining >= promotion.) {
+
+            }
+        }
     }
 
     public static Integer validateSkus(String skus) {
@@ -90,8 +99,3 @@ public class CheckoutSolution {
         return null;
     }
 }
-
-
-
-
-

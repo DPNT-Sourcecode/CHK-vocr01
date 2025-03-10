@@ -1,18 +1,35 @@
 package io.accelerate.solutions.CHK;
 
-import java.util.Map;
-
 /**
- * The type Promotion.
+ * The type Promotion promotion.
  */
-public abstract class Promotion {
+public class Promotion {
+    private final int quantityNeeded;
+    private final int promoPrice;
+    private final Character freeItem;
+
     /**
-     * Apply the promo to the product based on the check-out items and the quantity of the item.
+     * Instantiates a new Quantity promotion.
      *
-     * @param checkOutItems the check out items
-     * @return the promo applied
+     * @param quantityNeeded the quantity needed
+     * @param promoPrice     the promo price
      */
-    abstract int apply(Map<Character, Integer> checkOutItems);
+    public Promotion(int quantityNeeded, int promoPrice) {
+        this.quantityNeeded = quantityNeeded;
+        this.promoPrice = promoPrice;
+    }
+
+    /**
+     * Instantiates a new FreeItem promotion.
+     *
+     * @param quantityNeeded the quantity needed
+     * @param promoPrice     the promo price
+     * @param freeItem       the free item
+     */
+    public Promotion(int quantityNeeded, int promoPrice, Character freeItem) {
+        this.quantityNeeded = quantityNeeded;
+        this.promoPrice = promoPrice;
+        this.freeItem = freeItem;
+    }
+
 }
-
-
