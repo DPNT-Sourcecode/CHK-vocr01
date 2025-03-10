@@ -1,6 +1,8 @@
 package io.accelerate.solutions.CHK.dictionary;
 
 import java.util.TreeMap;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * The type Item price dictionary.
@@ -18,4 +20,13 @@ public class ItemPriceDictionary {
         itemPriceDictionary.put('D', 15);
         itemPriceDictionary.put('E', 40);
     }
+
+    private static final String VALID_ITEMS_REGEX = "[" +
+            itemPriceDictionary.keySet().
+                    stream().
+                    map(String::valueOf).
+                    collect(Collectors.joining()) + "]*";
+
+    public static final Pattern VALID_ITEMS_PATTERN = Pattern.compile(VALID_ITEMS_REGEX);
+
 }

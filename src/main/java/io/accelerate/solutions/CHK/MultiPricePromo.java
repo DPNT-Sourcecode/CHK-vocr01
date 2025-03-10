@@ -25,4 +25,3 @@ public class MultiPricePromo implements Promotion {
         return promoPrice * (checkOutItems.get(item) / promoQuantity) + ItemPriceDictionary.itemPriceDictionary.get(item) * (checkOutItems.get(item) % promoQuantity);
     }
 }
-

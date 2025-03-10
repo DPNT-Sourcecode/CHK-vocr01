@@ -12,31 +12,6 @@ import static io.accelerate.solutions.CHK.dictionary.ItemPriceDictionary.itemPri
  */
 public class CheckoutSolution {
 
-    private static final Map<Character, Integer> PRICES = Map.of(
-            'A', 50,
-            'B', 30,
-            'C', 20,
-            'D', 15,
-            'E', 40
-    );
-
-    private static final Map<Character, Promotion[]> PROMOTIONS = Map.of(
-            'A', new Promotion[]{
-                    new Promotion(3, 130),
-                    new Promotion(5, 200)
-            },
-            'B', new Promotion[]{new Promotion(2, 45)},
-            'E', new Promotion[]{new Promotion('E', 2, 'B')}
-    );
-
-    private static final String VALID_ITEMS_REGEX = "[" +
-            PRICES.keySet().
-                    stream().
-                    map(String::valueOf).
-                    collect(Collectors.joining()) + "]*";
-
-    private static final Pattern VALID_ITEMS_PATTERN = Pattern.compile(VALID_ITEMS_REGEX);
-
     /**
      * Supermarket checkout that calculates the total price of a number of items.
      *

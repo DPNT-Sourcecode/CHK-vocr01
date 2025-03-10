@@ -15,5 +15,3 @@ public interface Promotion {
      */
     int apply(Map<Character, Integer> checkOutItems);
 }
-
-
