@@ -24,5 +24,8 @@ class HelloSolutionTest {
     @Test
     void helloTest() {
         Assertions.assertTrue(helloSolution.hello("Tiago").contains("Tiago"));
+        Assertions.assertEquals("Hello World!", helloSolution.hello(""));
+        Assertions.assertEquals("Hello World!", helloSolution.hello("  "));
+        Assertions.assertEquals("Hello World!", helloSolution.hello(null));
     }
 }
