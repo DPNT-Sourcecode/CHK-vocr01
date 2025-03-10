@@ -41,10 +41,10 @@ class CheckoutSolutionTest {
         assertEquals(315, checkoutSolution.checkout("CCAAAFBBBEEF"));
         assertEquals(325, checkoutSolution.checkout("FFCCAAAFBBBEEF"));
 
-        assertEquals(-1, checkoutSolution.checkout("W"));
-        assertEquals(-1, checkoutSolution.checkout("ABW"));
-        assertEquals(-1, checkoutSolution.checkout("WBA"));
-        assertEquals(-1, checkoutSolution.checkout("AWB"));
+        assertEquals(-1, checkoutSolution.checkout("&"));
+        assertEquals(-1, checkoutSolution.checkout("AB&"));
+        assertEquals(-1, checkoutSolution.checkout("&BA"));
+        assertEquals(-1, checkoutSolution.checkout("A&B"));
         assertEquals(0, checkoutSolution.checkout(""));
         assertEquals(0, checkoutSolution.checkout("   "));
         assertEquals(-1, checkoutSolution.checkout(null));
