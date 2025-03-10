@@ -12,10 +12,11 @@ public class HelloSolution {
      * @return the sentence with the friend's name.
      */
     public String hello(String friendName) {
-        return "Hello World!";
+        return "Hello, World!";
 //        if (friendName == null || friendName.isBlank()) {
 //            return "Hello World!";
 //        }
 //        return "Hello " + friendName + "!";
     }
 }
+
