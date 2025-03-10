@@ -20,11 +20,11 @@ public class CheckoutSolution {
 
     private static final Map<Character, Promotion[]> PROMOTIONS = Map.of(
             'A', new Promotion[]{
-                    new Promotion('A', 3, 130),
-                    new Promotion('A', 5, 200)
+                    new Promotion(3, 130),
+                    new Promotion(5, 200)
             },
-            'B', new Promotion[]{new Promotion('B', 2, 45)},
-            'E', new FreeItemPromotion[]{new FreeItemPromotion('E', 2, 'B')}
+            'B', new Promotion[]{new Promotion(2, 45)},
+            'E', new Promotion[]{new Promotion('E', 2, 'B')}
     );
 
     private static final String VALID_ITEMS_REGEX = "[" +
@@ -82,10 +82,23 @@ public class CheckoutSolution {
             int total = 0;
             int remaining = count;
 
-            while (remaining >= promotion.) {
+            while (remaining >= promotion.getQuantityNeeded()) {
+                total += promotion.getPromoPrice();
+                remaining -= promotion.getQuantityNeeded();
+            }
 
+            //Applies other promos
+            if (remaining > 0) {
+                total += applyBestPromo(item, remaining, promotions, checkOutItems);
+            }
+
+            //Picks the best price
+            if (total < minTotal) {
+                minTotal = total;
             }
         }
+
+        return minTotal;
     }
 
     public static Integer validateSkus(String skus) {
@@ -99,3 +112,4 @@ public class CheckoutSolution {
         return null;
     }
 }
+

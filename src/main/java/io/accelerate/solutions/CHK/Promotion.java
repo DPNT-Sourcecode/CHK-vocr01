@@ -6,7 +6,7 @@ package io.accelerate.solutions.CHK;
 public class Promotion {
     private final int quantityNeeded;
     private final int promoPrice;
-    private final Character freeItem;
+    private Character freeItem;
 
     /**
      * Instantiates a new Quantity promotion.
@@ -32,4 +32,32 @@ public class Promotion {
         this.freeItem = freeItem;
     }
 
+    /**
+     * Gets free item.
+     *
+     * @return the free item
+     */
+    public Character getFreeItem() {
+        return freeItem;
+    }
+
+    /**
+     * Gets promo price.
+     *
+     * @return the promo price
+     */
+    public int getPromoPrice() {
+        return promoPrice;
+    }
+
+    /**
+     * Gets quantity needed.
+     *
+     * @return the quantity needed
+     */
+    public int getQuantityNeeded() {
+        return quantityNeeded;
+    }
+
 }
+
