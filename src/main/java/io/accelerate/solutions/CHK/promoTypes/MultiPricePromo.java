@@ -4,7 +4,6 @@ import io.accelerate.solutions.CHK.PromoConfig;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * The type Multi price promo.
@@ -69,3 +68,4 @@ public class MultiPricePromo {
         return promoQuantity;
     }
 }
+
