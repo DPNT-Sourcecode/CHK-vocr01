@@ -72,7 +72,7 @@ public class CheckoutSolution {
         return totalPrice;
     }
 
-    private static Integer validateSkus(String skus) {
+    public static Integer validateSkus(String skus) {
         if (skus == null || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
             return -1;
         }
@@ -83,4 +83,5 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 

@@ -8,7 +8,7 @@ import static io.accelerate.solutions.CHK.CheckoutSolution.PRICES;
  * The type MultiPrice promotion.
  */
 public class MultiPricePromotion extends Promotion {
-    private final int item;
+    private final char item;
     private final int quantityNeeded;
     private final int promoPrice;
 
@@ -18,7 +18,7 @@ public class MultiPricePromotion extends Promotion {
      * @param quantityNeeded the quantity needed
      * @param promoPrice     the promo price
      */
-    public MultiPricePromotion(int item, int quantityNeeded, int promoPrice) {
+    public MultiPricePromotion(char item, int quantityNeeded, int promoPrice) {
         this.item = item;
         this.quantityNeeded = quantityNeeded;
         this.promoPrice = promoPrice;
@@ -39,5 +39,6 @@ public class MultiPricePromotion extends Promotion {
         return totalPrice + (count % quantityNeeded) * PRICES.get(item);
     }
 }
+
 
 
