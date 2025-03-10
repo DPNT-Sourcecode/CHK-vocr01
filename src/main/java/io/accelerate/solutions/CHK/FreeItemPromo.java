@@ -36,6 +36,3 @@ public class FreeItemPromo implements CrossPromotion {
         }
     }
 }
-
-
-

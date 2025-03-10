@@ -14,4 +14,3 @@ public interface CrossPromotion {
      */
     void apply(Map<Character, Integer> checkOutItems);
 }
-

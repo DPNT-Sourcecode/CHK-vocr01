@@ -22,4 +22,3 @@ public class MultiPricePromo implements DirectPromotion {
         return promoPrice * (quantity / promoQuantity) + unitPrice * (quantity % promoQuantity);
     }
 }
-
