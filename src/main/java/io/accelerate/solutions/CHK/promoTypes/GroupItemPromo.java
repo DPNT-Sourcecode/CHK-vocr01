@@ -19,16 +19,28 @@ public class GroupItemPromo {
     }
 
     public int applyPromo(Map<Character, Integer> items) {
-        int totalGroupItems = 0;
-        for (Character groupItem : group) {
-            totalGroupItems += items.getOrDefault(groupItem, 0);
-        }
+        int totalGroupItems = getTotalGroupItems(items);
 
         int numberOfBundles = totalGroupItems / requiredQuantity;
         if (numberOfBundles <= 0) {
             return 0;
         }
 
+        List<GroupItem> itemList = getGroupItemsInfo(items);
+        int totalCostOfBundles = numberOfBundles * groupPrice;
+        int itemsOutOfPromotion = numberOfBundles * requiredQuantity;
+
+        for (GroupItem item : itemList) {
+            while (item.getQuantity() > 0 && itemsOutOfPromotion > 0) {
+                item.setQuantity(item.getQuantity() - 1);
+                itemsOutOfPromotion--;
+            }
+        }
+
+
+    }
+
+    private List<GroupItem> getGroupItemsInfo(Map<Character, Integer> items) {
         List<GroupItem> itemList = new ArrayList<>();
         for (Character groupItem : group) {
             int quantity = items.getOrDefault(groupItem, 0);
@@ -38,16 +50,15 @@ public class GroupItemPromo {
         }
 
         itemList.sort((a, b) -> Integer.compare(b.getUnitPrice(), a.getUnitPrice()));
+        return itemList;
+    }
 
-        int totalCostOfBundles = numberOfBundles * groupPrice;
-        int itemsOutOfPromotion = numberOfBundles * requiredQuantity;
-
-        for (GroupItem item : itemList) {
-            while(item.getQuantity() > 0 && itemsOutOfPromotion > 0) {
-                item.setQuantity(item.getQuantity()-1);
-                itemsOutOfPromotion--;
-            }
+    private int getTotalGroupItems(Map<Character, Integer> items) {
+        int totalGroupItems = 0;
+        for (Character groupItem : group) {
+            totalGroupItems += items.getOrDefault(groupItem, 0);
         }
+        return totalGroupItems;
     }
 
     private static class GroupItem {
@@ -78,6 +89,7 @@ public class GroupItemPromo {
         }
     }
 }
+
 
 
 
