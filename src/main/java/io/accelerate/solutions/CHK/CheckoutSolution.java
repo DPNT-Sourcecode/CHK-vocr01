@@ -75,6 +75,10 @@ public class CheckoutSolution {
         return totalPrice;
     }
 
+    private int applyBestPromo(char item, int count, Promotion[] promotions, Map<Character, Integer> checkOutItems) {
+        int minTotal = count * PRICES.get(item);
+    }
+
     public static Integer validateSkus(String skus) {
         if (skus == null || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
             return -1;
@@ -86,6 +90,7 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 
 
 
