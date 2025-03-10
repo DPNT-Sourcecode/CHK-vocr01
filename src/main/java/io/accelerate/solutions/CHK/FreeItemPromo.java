@@ -21,22 +21,22 @@ public class FreeItemPromo implements Promotion {
      */
     @Override
     public int apply(Map<Character, Integer> checkOutItems) {
-        int promoItemCount = checkOutItems.get(item);
-        int required = promoItemCount / requiredQuantity;
-        if (required <= 0) {
-            return 0;
+        Integer promoItemCount = checkOutItems.get(item);
+        if (promoItemCount != null) {
+            int required = promoItemCount / requiredQuantity;
+            if (required <= 0) {
+                return 0;
+            }
+
+            for (Map.Entry<Character, Integer> entry : freeItems.entrySet()) {
+                Character freeItem = entry.getKey();
+                int freeQuantity = entry.getValue();
+                int totalFree = required * freeQuantity;
+                int currentCount = checkOutItems.getOrDefault(freeItem, 0);
+
+                checkOutItems.put(freeItem, Math.max(currentCount - totalFree, totalFree));
+            }
         }
-
-        for (Map.Entry<Character, Integer> entry : freeItems.entrySet()) {
-            Character freeItem = entry.getKey();
-            int freeQuantity = entry.getValue();
-            int totalFree = required * freeQuantity;
-            int currentCount = checkOutItems.getOrDefault(freeItem, 0);
-
-            checkOutItems.put(freeItem, Math.max(currentCount - totalFree, totalFree));
-        }
-
         return 0;
     }
 }
-

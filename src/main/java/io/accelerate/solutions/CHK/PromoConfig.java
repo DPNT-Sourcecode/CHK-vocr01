@@ -55,6 +55,7 @@ public class PromoConfig {
                 promotions.add(new MultiPricePromo('A', 5, 200));
                 break;
             case 'B':
+                promotions.add(new MultiPricePromo('B', 2, 45));
                 break;
             default:
                 break;
@@ -76,5 +77,3 @@ public class PromoConfig {
         return promotions;
     }
 }
-
-

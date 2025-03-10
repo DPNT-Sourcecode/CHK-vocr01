@@ -61,5 +61,3 @@ public class MultiPricePromo implements Promotion {
         return minCosts[quantity];
     }
 }
-
-
