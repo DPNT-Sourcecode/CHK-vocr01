@@ -26,8 +26,10 @@ class CheckoutSolutionTest {
         assertEquals(100, checkoutSolution.checkout("AA"));
 
         assertEquals(80, checkoutSolution.checkout("EE"));
-
         assertEquals(80, checkoutSolution.checkout("EEB"));
+        assertEquals(110, checkoutSolution.checkout("EEBB"));
+        assertEquals(250, checkoutSolution.checkout("AAAAAA"));
+        assertEquals(300, checkoutSolution.checkout("AAAAAAA"));
 
         assertEquals(-1, checkoutSolution.checkout("W"));
         assertEquals(-1, checkoutSolution.checkout("ABW"));
@@ -38,3 +40,4 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(null));
     }
 }
+

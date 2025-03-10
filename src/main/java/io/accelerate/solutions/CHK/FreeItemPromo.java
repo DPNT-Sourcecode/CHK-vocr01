@@ -34,13 +34,12 @@ public class FreeItemPromo implements Promotion {
                 int totalFree = freeItemsMultiplier * numberOfEligibleFreeItems;
                 int checkOutFreeItems = checkOutItems.getOrDefault(freeItem, 0);
 
-                if (checkOutFreeItems > 0) {
-                    checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, totalFree));
-                }
+                checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
             }
         }
         return 0;
     }
 }
+
 
 
