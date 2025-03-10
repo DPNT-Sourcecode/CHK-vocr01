@@ -1,6 +1,6 @@
 package io.accelerate.solutions.CHK;
 
-public class MultiPricePromo implements PromotionInterface {
+public class MultiPricePromo implements DirectPromotion {
     private final int promoQuantity;
     private final int promoPrice;
 
@@ -22,3 +22,4 @@ public class MultiPricePromo implements PromotionInterface {
         return promoPrice * (quantity / promoQuantity) + unitPrice * (quantity % promoQuantity);
     }
 }
+

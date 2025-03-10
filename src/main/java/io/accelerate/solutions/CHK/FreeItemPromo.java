@@ -1,7 +1,7 @@
 package io.accelerate.solutions.CHK;
 
-public class FreeItemPromo implements PromotionInterface {
-    private int 
+public class FreeItemPromo implements DirectPromotion {
+    private int
 
     /**
      * Apply int.
@@ -16,3 +16,4 @@ public class FreeItemPromo implements PromotionInterface {
         return 0;
     }
 }
+

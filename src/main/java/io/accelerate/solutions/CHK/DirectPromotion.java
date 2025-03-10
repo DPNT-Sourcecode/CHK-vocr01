@@ -3,7 +3,7 @@ package io.accelerate.solutions.CHK;
 /**
  * The interface Promotion interface.
  */
-public interface PromotionInterface {
+public interface DirectPromotion {
 
     /**
      * Apply int.
