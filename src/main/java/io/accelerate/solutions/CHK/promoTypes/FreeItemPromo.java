@@ -31,7 +31,7 @@ public class FreeItemPromo {
      * @param items the items
      */
     public static void applyFreeItemPromo(Map<Character, Integer> items) {
-        for (FreeItemPromo freeItemPromo : PromoConfig.getFreeItemPromotionForItem()) {
+        for (FreeItemPromo freeItemPromo : PromoConfig.getFreeItemPromotion()) {
             freeItemPromo.applyPromo(items);
         }
     }
@@ -84,3 +84,4 @@ public class FreeItemPromo {
         checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
     }
 }
+

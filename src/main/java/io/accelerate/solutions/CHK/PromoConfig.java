@@ -106,11 +106,11 @@ public class PromoConfig {
     }
 
     /**
-     * Gets free item promotion for item.
+     * Gets free item promotion.
      *
-     * @return the free item promotion for item
+     * @return the free item promotion
      */
-    public static List<FreeItemPromo> getFreeItemPromotionForItem() {
+    public static List<FreeItemPromo> getFreeItemPromotion() {
         List<FreeItemPromo> promotions = new ArrayList<>();
 
         promotions.add(new FreeItemPromo('E', 2, Map.of('B', 1)));
@@ -122,3 +122,4 @@ public class PromoConfig {
         return promotions;
     }
 }
+
