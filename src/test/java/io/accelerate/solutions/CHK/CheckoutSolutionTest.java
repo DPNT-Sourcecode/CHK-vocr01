@@ -75,8 +75,6 @@ class CheckoutSolutionTest {
         assertEquals(150, checkoutSolution.checkout("RRR"));
         assertEquals(150, checkoutSolution.checkout("RRRQ"));
         assertEquals(180, checkoutSolution.checkout("RQRRQ"));
-        assertEquals(60, checkoutSolution.checkout("SS"));
-        assertEquals(40, checkoutSolution.checkout("TT"));
         assertEquals(120, checkoutSolution.checkout("UUU"));
         assertEquals(120, checkoutSolution.checkout("UUUU"));
         assertEquals(240, checkoutSolution.checkout("UUUUUUUU"));
@@ -85,9 +83,17 @@ class CheckoutSolutionTest {
         assertEquals(130, checkoutSolution.checkout("VVV"));
         assertEquals(180, checkoutSolution.checkout("VVVV"));
         assertEquals(40, checkoutSolution.checkout("WW"));
-        assertEquals(180, checkoutSolution.checkout("XX"));
-        assertEquals(20, checkoutSolution.checkout("YY"));
-        assertEquals(100, checkoutSolution.checkout("ZZ"));
+    }
+
+    @Test
+    void checkoutPhaseFiveTest() {
+        assertEquals(45, checkoutSolution.checkout("STX"));
+        assertEquals(62, checkoutSolution.checkout("STXS"));
+        assertEquals(82, checkoutSolution.checkout("STXYZ"));
+        assertEquals(90, checkoutSolution.checkout("STXYZZ"));
+        assertEquals(90, checkoutSolution.checkout("XXXXXX"));
+
+        assertEquals(342, checkoutSolution.checkout("STXYZVVLBEE"));
     }
 
     @Test

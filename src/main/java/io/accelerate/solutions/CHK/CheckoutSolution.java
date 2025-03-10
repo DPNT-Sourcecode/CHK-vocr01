@@ -1,6 +1,7 @@
 package io.accelerate.solutions.CHK;
 
 import io.accelerate.solutions.CHK.promoTypes.FreeItemPromo;
+import io.accelerate.solutions.CHK.promoTypes.GroupItemPromo;
 import io.accelerate.solutions.CHK.promoTypes.MultiPricePromo;
 
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class CheckoutSolution {
 
         FreeItemPromo.applyFreeItemPromo(items);
 
-        int totalPrice = 0;
+        int totalPrice = GroupItemPromo.applyGroupItemPromo(items);
 
         for (Map.Entry<Character, Integer> entry : items.entrySet()) {
             char item = entry.getKey();

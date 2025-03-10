@@ -31,12 +31,12 @@ public class MultiPricePromo {
     }
 
     /**
-     * Apply best promo int.
+     * Apply the best promo.
      *
      * @param quantity         the quantity
      * @param unitPrice        the unit price
      * @param multiPricePromos the multi price promos
-     * @return the int
+     * @return the price applying the best promo,
      */
     public static int applyBestPromo(int quantity, int unitPrice, List<MultiPricePromo> multiPricePromos) {
         int[] minCosts = new int[quantity + 1];

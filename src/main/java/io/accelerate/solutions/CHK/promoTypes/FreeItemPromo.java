@@ -55,11 +55,9 @@ public class FreeItemPromo {
     }
 
     private void computeFreeItemPromo(Map<Character, Integer> checkOutItems, Character freeItem, int totalFree, Integer promoItemCount) {
-        //Another free item
         if (!freeItem.equals(item)) {
             computeAnotherFreeItem(checkOutItems, freeItem, totalFree);
 
-            //A free item of the same item
         } else {
             computeSameTypeFreeItem(checkOutItems, promoItemCount);
         }
@@ -68,7 +66,7 @@ public class FreeItemPromo {
     private void computeSameTypeFreeItem(Map<Character, Integer> checkOutItems, Integer promoItemCount) {
 
         int groupSize = requiredQuantity + 1;
-        if(promoItemCount < groupSize) {
+        if (promoItemCount < groupSize) {
             return;
         }
 
@@ -84,4 +82,3 @@ public class FreeItemPromo {
         checkOutItems.put(freeItem, Math.max(checkOutFreeItems - totalFree, 0));
     }
 }
-

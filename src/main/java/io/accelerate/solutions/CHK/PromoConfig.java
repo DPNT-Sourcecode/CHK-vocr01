@@ -1,11 +1,13 @@
 package io.accelerate.solutions.CHK;
 
 import io.accelerate.solutions.CHK.promoTypes.FreeItemPromo;
+import io.accelerate.solutions.CHK.promoTypes.GroupItemPromo;
 import io.accelerate.solutions.CHK.promoTypes.MultiPricePromo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -33,14 +35,14 @@ public class PromoConfig {
             Map.entry('P', 50),
             Map.entry('Q', 30),
             Map.entry('R', 50),
-            Map.entry('S', 30),
+            Map.entry('S', 20),
             Map.entry('T', 20),
             Map.entry('U', 40),
             Map.entry('V', 50),
             Map.entry('W', 20),
-            Map.entry('X', 90),
-            Map.entry('Y', 10),
-            Map.entry('Z', 50)
+            Map.entry('X', 17),
+            Map.entry('Y', 20),
+            Map.entry('Z', 21)
     );
 
     private static final String VALID_ITEMS_REGEX = "[" +
@@ -118,6 +120,19 @@ public class PromoConfig {
         promotions.add(new FreeItemPromo('N', 3, Map.of('M', 1)));
         promotions.add(new FreeItemPromo('R', 3, Map.of('Q', 1)));
         promotions.add(new FreeItemPromo('U', 3, Map.of('U', 1)));
+
+        return promotions;
+    }
+
+    /**
+     * Gets group item promotion.
+     *
+     * @return the group item promotion
+     */
+    public static List<GroupItemPromo> getGroupItemPromotion() {
+        List<GroupItemPromo> promotions = new ArrayList<>();
+
+        promotions.add(new GroupItemPromo(Set.of('S', 'T', 'X', 'Y', 'Z'), 3, 45));
 
         return promotions;
     }
