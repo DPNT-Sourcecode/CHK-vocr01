@@ -26,9 +26,9 @@ public class MultiPricePromotion extends Promotion {
 
 
     /**
-     * Apply the promo to the product based on the check out items and the quantity of the item.
+     * Apply the promo to the product based on the check-out items and the quantity of the item.
      *
-     * @param checkOutItems the check out items
+     * @param checkOutItems the check-out items
      * @return the promo applied
      */
     @Override
@@ -39,6 +39,7 @@ public class MultiPricePromotion extends Promotion {
         return totalPrice + (count % quantityNeeded) * PRICES.get(item);
     }
 }
+
 
 
 
