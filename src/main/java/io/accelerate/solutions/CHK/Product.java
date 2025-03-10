@@ -17,4 +17,21 @@ public class Product {
         this.multiPricePromos = multiPricePromos;
         this.freeItemPromos = freeItemPromos;
     }
+
+    public char getItemCode() {
+        return itemCode;
+    }
+
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
+    public List<MultiPricePromo> getMultiPricePromos() {
+        return multiPricePromos;
+    }
+
+    public List<FreeItemPromo> getFreeItemPromos() {
+        return freeItemPromos;
+    }
 }
+
