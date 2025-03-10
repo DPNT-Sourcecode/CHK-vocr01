@@ -1,9 +1,16 @@
 package io.accelerate.solutions.HLO;
 
-import io.accelerate.runner.SolutionNotImplementedException;
-
+/**
+ * The Hello solution class.
+ */
 public class HelloSolution {
+    /**
+     * Returns a sentence containing the friend's name.
+     *
+     * @param friendName the friend name
+     * @return the sentence with the friend's name.
+     */
     public String hello(String friendName) {
-        throw new SolutionNotImplementedException();
+        return "Hello " + friendName + "!";
     }
 }
