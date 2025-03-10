@@ -6,6 +6,7 @@ import java.util.Map;
  * The type MultiPrice promotion.
  */
 public class MultiPricePromotion extends Promotion {
+    private final int item;
     private final int quantityNeeded;
     private final int promoPrice;
 
@@ -15,7 +16,8 @@ public class MultiPricePromotion extends Promotion {
      * @param quantityNeeded the quantity needed
      * @param promoPrice     the promo price
      */
-    public MultiPricePromotion(int quantityNeeded, int promoPrice) {
+    public MultiPricePromotion(int item, int quantityNeeded, int promoPrice) {
+        this.item = item;
         this.quantityNeeded = quantityNeeded;
         this.promoPrice = promoPrice;
     }
@@ -24,24 +26,14 @@ public class MultiPricePromotion extends Promotion {
     /**
      * Apply the promo to the product based on the check out items and the quantity of the item.
      *
-     * @param quantity      the quantity of the item to apply the promo
      * @param checkOutItems the check out items
-     * @return the int [ ] the promos
+     * @return the promo applied
      */
     @Override
-    int[] apply(int quantity, Map<Character, Integer> checkOutItems) {
-        int totalPrice = (quantity / quantityNeeded) * promoPrice;
+    int apply(Map<Character, Integer> checkOutItems) {
+        int totalPrice = (checkOutItems.getOrDefault(item, 0) / quantityNeeded) * promoPrice;
 
         return new int[]{totalPrice, quantity % quantityNeeded};
     }
-
-    /**
-     * Gets promo.
-     *
-     * @return the promo
-     */
-    @Override
-    int getPromo() {
-        return (quantityNeeded / quantityNeeded) * promoPrice;
-    }
 }
+
