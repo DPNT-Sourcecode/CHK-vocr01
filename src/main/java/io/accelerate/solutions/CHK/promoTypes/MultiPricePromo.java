@@ -2,6 +2,7 @@ package io.accelerate.solutions.CHK.promoTypes;
 
 import io.accelerate.solutions.CHK.PromoConfig;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -46,19 +47,18 @@ public class MultiPricePromo {
      */
     public static int applyBestPromo(int quantity, int unitPrice, List<MultiPricePromo> multiPricePromos, Map<Character, Integer> items) {
         int[] minCosts = new int[quantity + 1];
+        Arrays.fill(minCosts, Integer.MAX_VALUE);
         minCosts[0] = 0;
 
         for (int i = 1; i <= quantity; i++) {
             minCosts[i] = minCosts[i - 1] + unitPrice;
-        }
 
-
-        for (MultiPricePromo multiPricePromo : multiPricePromos) {
-            int promoQuantity = multiPricePromo.getPromoQuantity();
-            int promoCost = multiPricePromo.apply(items);
-
-            for (int i = promoQuantity; i <= quantity; i++) {
-                minCosts[i] = Math.min(minCosts[i], minCosts[i - promoQuantity] + promoCost);
+            for (MultiPricePromo multiPricePromo : multiPricePromos) {
+                int promoQuantity = multiPricePromo.getPromoQuantity();
+                if (i >= promoQuantity) {
+                    int promoCost = multiPricePromo.apply(items);
+                    minCosts[i] = Math.min(minCosts[i], minCosts[i - promoQuantity] + promoCost);
+                }
             }
         }
 
@@ -69,5 +69,6 @@ public class MultiPricePromo {
         return promoQuantity;
     }
 }
+
 
 
