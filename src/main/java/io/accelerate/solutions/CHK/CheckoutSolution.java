@@ -37,8 +37,9 @@ public class CheckoutSolution {
      * @return the total price.
      */
     public Integer checkout(String skus) {
-        if (skus == null || skus.isBlank() || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
-            return -1;
+        Integer validationResult = validateSkus(skus);
+        if (validationResult != null) {
+            return validationResult;
         }
 
         Map<Character, Integer> items = new HashMap<>();
@@ -67,6 +68,17 @@ public class CheckoutSolution {
         }
 
         return totalPrice;
+    }
+
+    private static Integer validateSkus(String skus) {
+        if (skus == null || !VALID_ITEMS_PATTERN.matcher(skus.trim()).matches()) {
+            return -1;
+        }
+
+        if (skus.isBlank()) {
+            return 0;
+        }
+        return null;
     }
 }
 
