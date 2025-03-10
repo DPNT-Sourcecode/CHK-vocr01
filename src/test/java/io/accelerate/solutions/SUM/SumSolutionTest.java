@@ -25,11 +25,10 @@ public class SumSolutionTest {
      * Compute sum.
      */
     @Test
-    public void compute_sum() {
+    public void compute_sumTest() {
         assertThat(sum.compute(1, 1), equalTo(2));
         assertThat(sum.compute(-1, -1), equalTo(-2));
         assertThat(sum.compute(-1, 1), equalTo(0));
 
     }
 }
-

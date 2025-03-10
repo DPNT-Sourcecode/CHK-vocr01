@@ -10,7 +10,7 @@ public class HelloSolution {
      * @param friendName the friend name
      * @return the sentence with the friend's name.
      */
-    public String hello(String friendName) {
+    public static String hello(String friendName) {
         return "Hello " + friendName + "!";
     }
 }
