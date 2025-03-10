@@ -34,11 +34,10 @@ public class CheckoutSolution {
 
         for (Map.Entry<Character, Integer> entry : items.entrySet()) {
             char item = entry.getKey();
-            int count = entry.getValue();
-            int unitPrice = PromoConfig.getUnitPrice(item);
-
+            int quantity = entry.getValue();
 
             List<MultiPricePromo> multiPricePromos = PromoConfig.getMultiPricePromotionForItem(item);
+            totalPrice += applyBestPromo(item, quantity);
         }
 
         return totalPrice;
@@ -52,30 +51,22 @@ public class CheckoutSolution {
         return items;
     }
 
-    private int applyBestPromo(char item, int count, Promotion[] promotions, Map<Character, Integer> checkOutItems) {
-        int minTotal = count * getUnitPrice(item);
+    private int applyBestPromo(char item, int quantity, int unitPrice, List<MultiPricePromo> multiPricePromos, Map<Character, Integer> items) {
+        int[] minCosts = new int[quantity + 1];
+        minCosts[0] = 0;
 
-        for (Promotion promotion : promotions) {
-            int total = 0;
-            int remaining = count;
+        for (int i = 1; i <= quantity; i++){
+            minCosts[i] = minCosts[i - 1] + unitPrice;
 
-            while (remaining >= promotion.getQuantityNeeded()) {
-                total += promotion.getPromoPrice();
-                remaining -= promotion.getQuantityNeeded();
-            }
-
-            //Applies other promos
-            if (remaining > 0) {
-                total += applyBestPromo(item, remaining, promotions, checkOutItems);
-            }
-
-            //Picks the best price
-            if (total < minTotal) {
-                minTotal = total;
+            for(MultiPricePromo multiPricePromo : multiPricePromos){
+                int promoCost = multiPricePromo.apply(items);
+                if(promoCost < minCosts[i]){
+                    minCosts[i] = promoCost;
+                }
             }
         }
 
-        return minTotal;
+        return minCosts[quantity];
     }
 
     public static Integer validateSkus(String skus) {
@@ -89,6 +80,7 @@ public class CheckoutSolution {
         return null;
     }
 }
+
 
 
 
