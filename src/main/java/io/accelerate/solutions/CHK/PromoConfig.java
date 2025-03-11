@@ -27,7 +27,7 @@ public class PromoConfig {
             Map.entry('H', 10),
             Map.entry('I', 35),
             Map.entry('J', 60),
-            Map.entry('K', 80),
+            Map.entry('K', 70),
             Map.entry('L', 90),
             Map.entry('M', 15),
             Map.entry('N', 40),
@@ -137,3 +137,4 @@ public class PromoConfig {
         return promotions;
     }
 }
+
