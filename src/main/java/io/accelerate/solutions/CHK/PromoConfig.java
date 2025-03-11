@@ -137,5 +137,3 @@ public class PromoConfig {
         return promotions;
     }
 }
-
-
