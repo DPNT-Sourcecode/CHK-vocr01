@@ -57,9 +57,9 @@ class CheckoutSolutionTest {
         assertEquals(80, checkoutSolution.checkout("HHHHHHHHHH"));
         assertEquals(70, checkoutSolution.checkout("II"));
         assertEquals(120, checkoutSolution.checkout("JJ"));
-        assertEquals(140, checkoutSolution.checkout("KK"));
-        assertEquals(230, checkoutSolution.checkout("KKK"));
-        assertEquals(300, checkoutSolution.checkout("KKKK"));
+        assertEquals(120, checkoutSolution.checkout("KK"));
+        assertEquals(190, checkoutSolution.checkout("KKK"));
+        assertEquals(240, checkoutSolution.checkout("KKKK"));
         assertEquals(180, checkoutSolution.checkout("LL"));
         assertEquals(30, checkoutSolution.checkout("MM"));
         assertEquals(120, checkoutSolution.checkout("NNN"));
@@ -107,3 +107,4 @@ class CheckoutSolutionTest {
         assertEquals(-1, checkoutSolution.checkout(null));
     }
 }
+
